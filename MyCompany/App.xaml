@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:MyCompany.Converters"
+             mc:Ignorable="d"
+             x:Class="MyCompany.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <conv:DateToBoolConverter x:Key="DateToBool"/>
+            <conv:DateToBoolInvertConverter x:Key="DateToBoolInvert"/>
+            <conv:DateToStringMonthConverter x:Key="DateToStringMonth"/>
+
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#FFFFFF</Color>
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="GreenColor">#FF43AB6F</Color>
+            <Color x:Key="ErrorColor">#ff5252</Color>
+
+             <Style x:Key="TextHeaders" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="SimpleText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource GreenColor}"/>
+                <Setter Property="FontAttributes" Value="None"/>
+            </Style>
+            <Style x:Key="TextBox" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource GreenColor}"/>
+            </Style>
+
+            <!--New styles-->
+            <Style x:Key="Label" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="TextColor" Value="#959DA8"/>
+            </Style>
+            <Style x:Key="LabelHeader" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="32"/>
+            </Style>
+
+            <Style x:Key="LabelBox" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="TextColor" Value="#C5CEC3"/>
+            </Style>
+            <Style x:Key="EntryBox" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="#00FFFFFF"/>
+            </Style>
+            <Style x:Key="Button" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#43A6F6"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="32"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="30,0,30,0"/>
+            </Style>
+
+            <Style x:Key="BoxView" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="-5"/>
+            </Style>
+
+            <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="#70FFFFFF"/>
+                <Setter Property="IsVisible" Value="{Binding IsBusy}"/>
+                <Setter Property="IsRunning" Value="{Binding IsBusy}"/>
+            </Style>
+
+            <Style x:Key="PickerMonth" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="#00000000"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <!--Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </-->
+
+            <Style x:Key="PageStyle" TargetType="Page">
+                <Setter Property="BackgroundImageSource" Value="Background.png"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

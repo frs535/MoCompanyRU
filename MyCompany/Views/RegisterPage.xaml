@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.RegisterPage"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             xmlns:conv="clr-namespace:MyCompany.Converters"
+             xmlns:behaviors="clr-namespace:MyCompany.Behaviors"
+             xmlns:controls="clr-namespace:MyCompany.Controls"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.Resources>
+        <conv:StringToBoolConverter x:Key="StringToBool"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding FillByINNCommand}" Text="INN"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Style="{StaticResource BoxView}" IsVisible="{Binding NotRegistred}"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="First name" Style="{StaticResource LabelBox}" IsVisible="{Binding FirstName, Converter={StaticResource StringToBool}}"/>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding FirstName}" Style="{StaticResource EntryBox}" IsVisible="{Binding NotRegistred}">
+
+            </Entry>
+
+            <controls:TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" Label="Last name"/>
+
+            <!--
+            <Label Grid.Row="2" Grid.Column="1" Text="Last name" Style="{StaticResource LabelBox}" IsVisible="{Binding LastName, Converter={StaticResource StringToBool}}"/>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource EntryBox}" IsVisible="{Binding NotRegistred}">
+
+            </Entry>
+            -->
+
+            <Label Grid.Row="3" Grid.Column="1" Text="Email" Style="{StaticResource LabelBox}" IsVisible="{Binding Email, Converter={StaticResource StringToBool}}"/>
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Email}" Style="{StaticResource EntryBox}" IsVisible="{Binding NotRegistred}">
+
+            </Entry>
+
+            <Label Grid.Row="4" Grid.Column="1" Text="Password" Style="{StaticResource LabelBox}" IsVisible="{Binding Password, Converter={StaticResource StringToBool}}"/>
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Password}" IsPassword="True" Style="{StaticResource EntryBox}" IsVisible="{Binding NotRegistred}">
+
+            </Entry>
+
+            <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" IsVisible="{Binding NotRegistred}">
+                <Label  Text="Is company" Style="{StaticResource LabelBox}" />
+                <Switch Grid.Row="5" Grid.Column="1" IsToggled="{Binding IsCompany, Mode=TwoWay}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical" IsVisible="{Binding Isregistred}">
+                <Label Text="We send you email for verification"/>
+                <Button Text="Ok" Command="{Binding RegisterFinishedCommand, Mode=TwoWay}" Style="{StaticResource Button}"/>
+            </StackLayout>
+
+            <ScrollView  Grid.Row="6" Grid.Column="1" Margin="-5,10,-5,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsCompany}">
+                <Grid Margin="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1"/>
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="19" Style="{StaticResource BoxView}" Margin="0,-10,0,-10"/>
+
+                    <Label Grid.Row="0"  Grid.Column="1" Text="INN" Style="{StaticResource LabelBox}" IsVisible="{Binding INN, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding INN}" Style="{StaticResource EntryBox}">
+
+                    </Entry>
+
+                    <Label Grid.Row="1" Grid.Column="1" Text="KPP" Style="{StaticResource LabelBox}" IsVisible="{Binding KPP, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding KPP}" Style="{StaticResource EntryBox}">
+
+                    </Entry>
+
+                    <Label Grid.Row="2" Grid.Column="1" Text="Name" Style="{StaticResource LabelBox}" IsVisible="{Binding Name, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource EntryBox}"/>
+
+                    <Label Grid.Row="3" Grid.Column="1" Text="Full name" Style="{StaticResource LabelBox}" IsVisible="{Binding FullName, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding FullName}" Style="{StaticResource EntryBox}"/>
+
+                    <!--Legal adress-->
+                    <Label Grid.Row="4" Grid.Column="1" Text="Legal adress" Style="{StaticResource Label}" Margin="0,10,0,0"/>
+                    <Grid Grid.Row="5" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Text="City" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdress.City, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding LegalAdress.City}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="ZIP Code" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdress.ZIPCode, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding LegalAdress.ZIPCode}" Style="{StaticResource EntryBox}"/>
+                    </Grid>
+
+                    <Label Grid.Row="6" Grid.Column="1" Text="Street" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdress.Street, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding LegalAdress.Street}" Style="{StaticResource EntryBox}"/>
+
+                    <Grid Grid.Row="7" Grid.Column="1" >
+                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Text="Hause" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdress.Hause, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding LegalAdress.Hause}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="Office" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdress.Office, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding LegalAdress.Office}" Style="{StaticResource EntryBox}"/>
+
+                    </Grid>
+
+                    <!--Actual adress-->
+                    <Label Grid.Row="8" Grid.Column="1" Text="Actual adress" Style="{StaticResource Label}" Margin="0,10,0,0"/>
+                    <Grid Grid.Row="9" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Text="City" Style="{StaticResource LabelBox}" IsVisible="{Binding ActualAdress.City, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding ActualAdress.City}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="ZIP Code" Style="{StaticResource LabelBox}" IsVisible="{Binding ActualAdress.ZIPCode, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding ActualAdress.ZIPCode}" Style="{StaticResource EntryBox}"/>
+                    </Grid>
+                    
+                    <Label Grid.Row="10" Grid.Column="1" Text="Street" Style="{StaticResource LabelBox}" IsVisible="{Binding ActualAdress.Street, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="10" Grid.Column="1" Text="{Binding ActualAdress.Street}" Style="{StaticResource EntryBox}"/>
+
+                    <Grid Grid.Row="11" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Text="Hause" Style="{StaticResource LabelBox}" IsVisible="{Binding ActualAdress.Hause, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding ActualAdress.Hause}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="Office" Style="{StaticResource LabelBox}" IsVisible="{Binding ActualAdress.Office, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding ActualAdress.Office}" Style="{StaticResource EntryBox}"/>
+                    </Grid>
+
+                    <!--Postal adress-->
+                    <Label Grid.Row="12" Grid.Column="1" Text="Postal adress" Style="{StaticResource Label}" Margin="0,10,0,0"/>
+                    <Grid Grid.Row="13" Grid.Column="1">
+                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Text="City" Style="{StaticResource LabelBox}" IsVisible="{Binding PostalAdress.City, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding PostalAdress.City}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="ZIP Code" Style="{StaticResource LabelBox}" IsVisible="{Binding PostalAdress.ZIPCode, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding PostalAdress.ZIPCode}" Style="{StaticResource EntryBox}"/>
+
+                    </Grid>
+
+                    <Label Grid.Row="14" Grid.Column="1" Text="Street" Style="{StaticResource LabelBox}" IsVisible="{Binding PostalAdress.Street, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="14" Grid.Column="1" Text="{Binding PostalAdress.Street}" Style="{StaticResource EntryBox}"/>
+
+                    <Grid Grid.Row="15" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Text="Hause" Style="{StaticResource LabelBox}" IsVisible="{Binding PostalAdress.Hause, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="0" Text="{Binding PostalAdress.Hause}" Style="{StaticResource EntryBox}"/>
+
+                        <Label Grid.Column="1" Text="Office" Style="{StaticResource LabelBox}" IsVisible="{Binding PostalAdress.Office, Converter={StaticResource StringToBool}}"/>
+                        <Entry Grid.Column="1" Text="{Binding PostalAdress.Office}" Style="{StaticResource EntryBox}"/>
+
+                    </Grid>
+                    
+                    <Label Grid.Row="16" Grid.Column="1" Text="Bank" Style="{StaticResource Label}" Margin="0,10,0,0"/>
+
+                    <Label Grid.Row="17" Grid.Column="1" Text="BIK" Style="{StaticResource LabelBox}" IsVisible="{Binding Bank.BIK, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="17" Grid.Column="1"  Text="{Binding Bank.Value.BIK}" IsVisible="{Binding IsCompany}" Style="{StaticResource EntryBox}">
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding CheckBankCommand}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label Grid.Row="18" Grid.Column="1" Text="Account" Style="{StaticResource LabelBox}" IsVisible="{Binding Bank.Account, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Row="18" Grid.Column="1" Text="{Binding Bank.Value.Account}" IsVisible="{Binding IsCompany}" Style="{StaticResource EntryBox}"/>
+                </Grid>
+            </ScrollView>
+
+            <Button Grid.Row="7" Grid.Column="1" Text="Register" Command="{Binding RegisterCommand}" Style="{StaticResource Button}" IsVisible="{Binding NotRegistred}"/>
+
+            <ActivityIndicator Grid.Column="1" Grid.RowSpan="8" Style="{StaticResource ActivityIndicator}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

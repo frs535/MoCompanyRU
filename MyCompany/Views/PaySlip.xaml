@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.PaySlip"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.BindingContext>
+        <vm:PaySlipViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <BoxView Grid.Column="1" Grid.Row="1" BackgroundColor="White" Margin="-5" CornerRadius="15"/>
+            <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource LabelBox}" Text="Choise period" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBool}}"/>
+            <Picker Grid.Column="1" Grid.Row="1" ItemsSource="{Binding AvalibleMonth}" SelectedItem="{Binding SelectedMonth, Mode=TwoWay}" ItemDisplayBinding="{Binding Date, Converter={StaticResource DateToStringMonth}}" Style="{StaticResource PickerMonth}"/>
+
+            <BoxView Grid.Column="1" Grid.Row="3" BackgroundColor="#43A6F6" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}"/>
+            <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Horizontal" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}">
+                <Label Text="{Binding Organisation}" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="18"/>
+                <Label Text="Department:" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="14"/>
+                <Label Text="{Binding Department}" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="14"/>
+            </StackLayout>
+
+            <BoxView Grid.Column="1" Grid.Row="4" BackgroundColor="#43A6F6" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}"/>
+            <StackLayout Grid.Column="1" Grid.Row="4" Orientation="Horizontal" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}">
+                <Label Text="Position:" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="18"/>
+                <Label Text="{Binding Position}" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="18"/>
+                <Label Text="№" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="14"/>
+                <Label Text="{Binding TabNumber}" Style="{StaticResource Label}" TextColor="#FDFDFD" FontSize="14"/>
+            </StackLayout>
+
+            <BoxView Grid.Column="1" Grid.Row="5" BackgroundColor="#FDFDFD" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}"/>
+            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Income, StringFormat='Income {0:F0}'}" Style="{StaticResource Label}" FontSize="26" TextColor="Black" FontAttributes="Bold" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}"/>
+
+           <CollectionView Grid.Column="1" Grid.Row="6" ItemsSource="{Binding Accrued}" IsGrouped="True" IsVisible="{Binding SelectedMonth, Converter={StaticResource DateToBoolInvert}}">
+               <CollectionView.Header>
+                   <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+
+                        <BoxView BackgroundColor="#43A6F6" Grid.Row="0" Grid.ColumnSpan="4"/>
+                        <BoxView BackgroundColor="#43A6F6" Grid.Row="1" Grid.ColumnSpan="4" />
+
+                        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Type" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+                        <Label Grid.Column="2" Grid.Row="0" Text="Period" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+                        <Label Grid.Column="3" Grid.Row="0" Text="Amount" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Text="Worked days" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="Worked hours" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="Paid days" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+                        <Label Grid.Column="3" Grid.Row="1" Text="Paid hours" Style="{StaticResource Label}" TextColor="#FDFDFD"/>
+
+                    </Grid>
+               </CollectionView.Header>
+               <CollectionView.GroupHeaderTemplate>
+                   <DataTemplate>
+                        <Grid BackgroundColor="#E4EAF0">
+                            
+                            <Label Style="{StaticResource Label}" FontSize="20" TextColor="#858A90">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}"/>
+                                        <Span Text=" (" FontSize="15"/>
+                                        <Span Text="{Binding TotalAmount, StringFormat='{0:F2}'}" FontSize="15" TextColor="Black"/>
+                                         <Span Text=")" FontSize="15"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+               <CollectionView.ItemTemplate>
+                   <DataTemplate>
+                       <Grid Padding="2" BackgroundColor="#E4EAF0" Margin="0,0,0,0">
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                           </Grid.ColumnDefinitions>
+                           <Grid.RowDefinitions>
+                               <RowDefinition Height="20"/>
+                               <RowDefinition Height="20"/>
+                           </Grid.RowDefinitions>
+                           
+                           <BoxView BackgroundColor="#FDFDFD" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+
+                           <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Type}" Style="{StaticResource Label}" TextColor="#848A92"/>
+                           <Label Grid.Column="2" Grid.Row="0" Text="{Binding Period, StringFormat='{0:MMMM}'}" Style="{StaticResource Label}" TextColor="#848A92"/>
+                           <Label Grid.Column="3" Grid.Row="0" Text="{Binding Amount}" Style="{StaticResource Label}" TextColor="#848A92"/>
+
+                           <Label Grid.Column="0" Grid.Row="1" Text="{Binding WorkedOutDays}" Style="{StaticResource Label}" TextColor="#848A92"/>
+                           <Label Grid.Column="1" Grid.Row="1" Text="{Binding WorkedOutHours}" Style="{StaticResource Label}" TextColor="#848A92"/>
+                           <Label Grid.Column="2" Grid.Row="1" Text="{Binding PaidDays}" Style="{StaticResource Label}" TextColor="#848A92"/>
+                           <Label Grid.Column="3" Grid.Row="1" Text="{Binding PaidHours}" Style="{StaticResource Label}" TextColor="#848A92"/>
+
+                       </Grid>
+                   </DataTemplate>
+               </CollectionView.ItemTemplate>
+               <CollectionView.GroupFooterTemplate>
+                   <DataTemplate>
+                       <Grid>
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                           </Grid.ColumnDefinitions>
+                          <Grid.RowDefinitions>
+                              <RowDefinition Height="15"/>
+                              <RowDefinition Height="3"/>
+                          </Grid.RowDefinitions>
+
+                           <BoxView Grid.ColumnSpan="4" Grid.Row="0" BackgroundColor="#42A5F5"/>
+
+                           <Label Grid.Column="0" Grid.Row="0" Text="{Binding TotalWorkedOutDays}" Style="{StaticResource Label}" FontAttributes="Bold" TextColor="White"/>
+                           <Label Grid.Column="1" Grid.Row="0" Text="{Binding TotalWorkedOutHours}" Style="{StaticResource Label}" FontAttributes="Bold" TextColor="White"/>
+                           <Label Grid.Column="2" Grid.Row="0" Text="{Binding TotalPaidDays}" Style="{StaticResource Label}" FontAttributes="Bold" TextColor="White"/>
+                           <Label Grid.Column="3" Grid.Row="0" Text="{Binding TotalPaidHours}" Style="{StaticResource Label}" FontAttributes="Bold" TextColor="White"/>
+                       </Grid>
+                   </DataTemplate>
+               </CollectionView.GroupFooterTemplate>
+           </CollectionView>
+
+            <ActivityIndicator Grid.ColumnSpan="3" Grid.RowSpan="7" Style="{StaticResource ActivityIndicator}">
+                <ActivityIndicator.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS, Android" Value="100"/>
+                    </OnPlatform>
+                </ActivityIndicator.WidthRequest>
+            </ActivityIndicator>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

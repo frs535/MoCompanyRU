@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.PersonalData"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             xmlns:conv="clr-namespace:MyCompany.Converters"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.Resources>
+        <conv:StringToBoolConverter x:Key="StringToBool"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:PersonalDataViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+       <ScrollView>
+           <Grid>
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="10"/>
+                   <ColumnDefinition Width="*"/>
+                   <ColumnDefinition Width="10"/>
+               </Grid.ColumnDefinitions>
+               <Grid.RowDefinitions>
+                   <RowDefinition Height="10"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+               </Grid.RowDefinitions>
+
+               <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelHeader}" Text="{Binding LastName}"/>
+               <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelHeader}" Text="{Binding FirstName}"/>
+               <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelHeader}" Text="{Binding MiddleName}"/>
+
+               <!--Salary-->
+               <Grid Grid.Row="4" Grid.Column="1" >
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="*"/>
+                       <ColumnDefinition Width="*"/>
+                   </Grid.ColumnDefinitions>
+
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="40"/>
+                       <RowDefinition Height="3"/>
+                       <RowDefinition Height="40"/>
+                   </Grid.RowDefinitions>
+
+                   <Label Grid.Row="0" Grid.Column="0" Text="Начислено" TextColor="#42A5F5" FontSize="25" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"/>
+                   <Label Grid.Row="0" Grid.Column="1" Text="{Binding InSalary}" TextColor="Black" FontSize="27" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"/>
+
+                   <BoxView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#42A5F5" Margin="30,0,30,0"/>
+
+                   <Label Grid.Row="2" Grid.Column="0" Text="Выплачено" TextColor="#6С7480" FontSize="23" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                   <Label Grid.Row="2" Grid.Column="1" Text="{Binding OutSalary}" TextColor="Black" FontSize="25" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+
+               </Grid>
+
+               <BoxView Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" BackgroundColor="White" CornerRadius="15" Margin="-5,0,-5,-5"/>
+               <Label Grid.Column="1" Grid.Row="5" Text="Main document" Style="{StaticResource Label}" Margin="0,0,0,10"/>
+
+               <Editor Grid.Column="1" Grid.Row="6" Text="{Binding MainDocument}" Style="{StaticResource EntryBox}" IsReadOnly="True"/>
+               
+               <BoxView Grid.Column="1" Grid.Row="8" Grid.RowSpan="4" BackgroundColor="White" CornerRadius="15" Margin="-5,0,-5,0"/>
+
+               <!--Adress-->
+                <Label Grid.Row="8" Grid.Column="1" Text="Adress" Style="{StaticResource Label}" Margin="0,10,0,0"/>
+                <Grid Grid.Row="9" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Text="City" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdres.City, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Column="0" Text="{Binding LegalAdres.City}" Style="{StaticResource EntryBox}"/>
+
+                    <Label Grid.Column="1" Text="ZIP Code" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdres.ZIPCode, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Column="1" Text="{Binding LegalAdres.ZIPCode}" Style="{StaticResource EntryBox}"/>
+
+                </Grid>
+
+                <Label Grid.Row="10" Grid.Column="1" Text="Street" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdres.Street, Converter={StaticResource StringToBool}}"/>
+                <Entry Grid.Row="10" Grid.Column="1" Text="{Binding LegalAdres.Street}" Style="{StaticResource EntryBox}"/>
+
+                <Grid Grid.Row="11" Grid.Column="1" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Text="Hause" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdres.Hause, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Column="0" Text="{Binding LegalAdres.Hause}" Style="{StaticResource EntryBox}"/>
+
+                    <Label Grid.Column="1" Text="Office" Style="{StaticResource LabelBox}" IsVisible="{Binding LegalAdres.Office, Converter={StaticResource StringToBool}}"/>
+                    <Entry Grid.Column="1" Text="{Binding LegalAdres.Office}" Style="{StaticResource EntryBox}"/>
+
+                </Grid>
+
+               <Button Grid.Column="1" Grid.Row="12" Style="{StaticResource Button}" Text="Incorrect data" Command="{Binding IncorrectDataCommand}"/>
+
+               <ActivityIndicator Grid.ColumnSpan="3" Grid.RowSpan="11" Style="{StaticResource ActivityIndicator}"/>
+
+            </Grid>
+       </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

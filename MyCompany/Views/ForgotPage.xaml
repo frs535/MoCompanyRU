@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.ForgotPage"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             xmlns:cnv="clr-namespace:MyCompany.Converters"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.Resources>
+        <cnv:StringToBoolConverter x:Key="StringToBool"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:ForgotViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <BoxView Grid.Column="1"  Grid.Row="1" BackgroundColor="White" Margin="-5,-5,-5,-5" CornerRadius="15"/>
+            <Label Grid.Column="1" Grid.Row="1" Text="Write yuor email or id" Style="{StaticResource LabelBox}"/>
+            <Entry Grid.Column="1" Grid.Row="1" Style="{StaticResource EntryBox}" Text="{Binding Email}">
+
+            </Entry>
+
+            <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource Label}" Text="{Binding Message, Mode=TwoWay}" IsVisible="{Binding Message, Converter={StaticResource StringToBool}}"/>
+            <Button Grid.Column="1" Grid.Row="4" Style="{StaticResource Button}" Text="Restore"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

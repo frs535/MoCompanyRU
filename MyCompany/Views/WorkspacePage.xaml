@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d" xmlns:views="clr-namespace:MyCompany.Views"
+            x:Class="MyCompany.Views.WorkspacePage"
+            NavigationPage.HasNavigationBar="False"
+            Style="{StaticResource PageStyle}"
+            xmlns:behavior="clr-namespace:MyCompany.Behaviors"
+            >
+
+   <views:PersonalData IconImageSource="tab_feed.png" Title="Персональные">
+        <views:PersonalData.Behaviors>
+            <behavior:EventToCommandBehaviorPage EventName="Appearing" Command="{Binding AppearingCommand}"/>
+        </views:PersonalData.Behaviors>
+    </views:PersonalData>
+
+    <views:Schedule IconImageSource="tab_feed.png" Title="График">
+        <views:Schedule.Behaviors>
+            <behavior:EventToCommandBehaviorPage EventName="Appearing" Command="{Binding AppearingCommand}"/>
+        </views:Schedule.Behaviors>
+    </views:Schedule>
+
+    <views:PaySlip IconImageSource="tab_feed.png" Title="Листок">
+        <views:PaySlip.Behaviors>
+            <behavior:EventToCommandBehaviorPage EventName="Appearing" Command="{Binding AppearingCommand}"/>
+        </views:PaySlip.Behaviors>
+    </views:PaySlip>
+
+    <views:HolidayPage IconImageSource="tab_about.png" Title="Отпуск">
+        <views:HolidayPage.Behaviors>
+            <behavior:EventToCommandBehaviorPage EventName="Appearing" Command="{Binding AppearingCommand}"/>
+        </views:HolidayPage.Behaviors>
+    </views:HolidayPage>
+
+    <views:PrivilegesPage IconImageSource="tab_about.png" Title="Льготы">
+        <views:PrivilegesPage.Behaviors>
+            <behavior:EventToCommandBehaviorPage EventName="Appearing" Command="{Binding AppearingCommand}"/>
+        </views:PrivilegesPage.Behaviors>
+    </views:PrivilegesPage>
+</TabbedPage>

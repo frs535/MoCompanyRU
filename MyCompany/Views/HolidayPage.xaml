@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.HolidayPage"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.BindingContext>
+        <vm:HolidayViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <CollectionView Grid.Column="1" ItemsSource="{Binding Calendars}" IsGrouped="True" ItemSizingStrategy="MeasureFirstItem">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <BoxView Grid.Column="0" Grid.ColumnSpan="8" Style="{StaticResource BoxView}" CornerRadius="0"/>
+
+                            <Label Grid.Column="0" Text="{Binding Path=NumberOfWeek}" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                            <Label Grid.Column="1" Text="{Binding Path=Monday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="2" Text="{Binding Path=Tuesday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="3" Text="{Binding Path=Wednesday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="4" Text="{Binding Path=Thursday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="5" Text="{Binding Path=Friday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="6" Text="{Binding Path=Saturday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                            <Label Grid.Column="7" Text="{Binding Path=Sunday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+
+                            <Label Grid.Column="1" Text="{Binding Path=Monday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="2" Text="{Binding Path=Tuesday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="3" Text="{Binding Path=Wednesday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="4" Text="{Binding Path=Thursday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="5" Text="{Binding Path=Friday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="6" Text="{Binding Path=Saturday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            <Label Grid.Column="7" Text="{Binding Path=Sunday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="#00000000">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <BoxView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="8" Style="{StaticResource BoxView}" CornerRadius="0"/>
+                        <Label Grid.Column="0" Grid.ColumnSpan="7" Text="{Binding Header}" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="№" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="Пн" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="Вт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="3" Grid.Row="1" Text="Ср" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="4" Grid.Row="1" Text="Чт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="5" Grid.Row="1" Text="Пт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="6" Grid.Row="1" Text="Сб" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="7" Grid.Row="1" Text="Вс" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                    </Grid>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+            </CollectionView>
+           
+            <ActivityIndicator Grid.ColumnSpan="3" Style="{StaticResource ActivityIndicator}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

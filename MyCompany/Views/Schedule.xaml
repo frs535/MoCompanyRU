@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels"
+             x:Class="MyCompany.Views.Schedule"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.BindingContext>
+        <vm:ScheduleViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Picker Grid.Row="1" ItemsSource="{Binding Months}"
+                    SelectedItem="{Binding SelectedMonths}"
+                    ItemDisplayBinding="{Binding Date,Converter={StaticResource DateToStringMonth}}"
+                    Title="Выберите месяц"/>
+
+            <ListView Grid.Row="2" ItemsSource="{Binding ItemsSource}"
+                      BackgroundColor="#00000000"
+                      SeparatorVisibility="None"
+                      SelectionMode="Single"
+                      IsVisible="{Binding SelectedMonths, Converter={StaticResource DateToBoolInvert}}">
+                <ListView.Header>
+                    <Grid BackgroundColor="#00000000">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <BoxView Grid.Column="0" Grid.ColumnSpan="8" Style="{StaticResource BoxView}" CornerRadius="0"/>
+                        <Label Grid.Column="0" Text="№" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Text="Пн" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Text="Вт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="3" Text="Ср" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="4" Text="Чт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="5" Text="Пт" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="6" Text="Сб" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                        <Label Grid.Column="7" Text="Вс" Style="{StaticResource Label}" FontAttributes="Bold"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.Footer>
+                    <Grid Padding="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+
+                        <BoxView Grid.Row="1" BackgroundColor="#FDFDFD" Grid.RowSpan="3"/>
+                        <Label Grid.Row="1" Style="{StaticResource Label}" HorizontalOptions="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Total work is " FontSize="18" TextColor="#42A5F5" FontAttributes="Bold"/>
+                                    <Span Text="{Binding TotalWorkDays}" FontSize="23" TextColor="Black"/>
+                                    <Span Text=" days" FontSize="18" TextColor="#42A5F5" FontAttributes="Bold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <BoxView Grid.Row="2" Margin="15,0,15,0" BackgroundColor="#42A5F5"/>
+
+                        <Label Grid.Row="3" Style="{StaticResource Label}" HorizontalOptions="Start">
+                             <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Total work is " FontSize="18" TextColor="#42A5F5" FontAttributes="Bold"/>
+                                    <Span Text="{Binding TotalWorkTime,StringFormat='{0:F2}'}" FontSize="23" TextColor="Black"/>
+                                    <Span Text=" hourse" FontSize="18" TextColor="#42A5F5" FontAttributes="Bold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </Grid>
+                </ListView.Footer>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <BoxView Grid.Column="0" Grid.ColumnSpan="8" Style="{StaticResource BoxView}" CornerRadius="0"/>
+
+                                <Label Grid.Column="0" Text="{Binding Path=NumberOfWeek}" Style="{StaticResource Label}" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="{Binding Path=Monday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="2" Text="{Binding Path=Tuesday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="3" Text="{Binding Path=Wednesday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="4" Text="{Binding Path=Thursday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="5" Text="{Binding Path=Friday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="6" Text="{Binding Path=Saturday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+                                <Label Grid.Column="7" Text="{Binding Path=Sunday.WorkTime}" Style="{StaticResource Label}" FontSize="22" TextColor="#42A5F5"/>
+
+                                <Label Grid.Column="1" Text="{Binding Path=Monday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="2" Text="{Binding Path=Tuesday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="3" Text="{Binding Path=Wednesday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="4" Text="{Binding Path=Thursday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="5" Text="{Binding Path=Friday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="6" Text="{Binding Path=Saturday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                                <Label Grid.Column="7" Text="{Binding Path=Sunday.Day}" FontSize="12" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Margin="12,0,0,4"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ActivityIndicator Grid.Row="1" Grid.RowSpan="1" Style="{StaticResource ActivityIndicator}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

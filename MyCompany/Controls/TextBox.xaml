@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Controls.TextBox">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelTextBox" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="TextColor" Value="#C5CEC3"/>
+            </Style>
+            <Style x:Key="EntryTextBox" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="#00FFFFFF"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+               <Style x:Key="ButtonTextBox" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#43A6F6"/>
+                <Setter Property="CornerRadius" Value="32"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" x:Name="lblTextBox" Style="{StaticResource LabelTextBox}"/>
+            <Entry Grid.Column="0" x:Name="entTextBox" Style="{StaticResource EntryTextBox}"/>
+
+            <Label Grid.Column="1" x:Name="lblRequaredField" Text="*" TextColor="Red" HorizontalOptions="End" VerticalOptions="Start" IsVisible="False"/>
+            <ImageButton Grid.Column="1" x:Name="btnError" Source="Logo.png" HeightRequest="15" WidthRequest="15" Style="{StaticResource EntryTextBox}" IsVisible="False"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

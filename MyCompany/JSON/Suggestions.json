@@ -1,0 +1,165 @@
+﻿{
+  "suggestions": [
+    {
+      "value": "ООО \"МОТОРИКА\"",
+      "unrestricted_value": "ООО \"МОТОРИКА\"",
+      "data": {
+        "kpp": "402701001",
+        "capital": {
+          "type": "УСТАВНЫЙ КАПИТАЛ",
+          "value": 12000
+        },
+        "management": {
+          "name": "Алексеев Денис Сергеевич",
+          "post": "ДИРЕКТОР",
+          "disqualified": null
+        },
+        "founders": [
+          {
+            "inn": "402708415215",
+            "fio": {
+              "surname": "Алексеев",
+              "name": "Денис",
+              "patronymic": "Сергеевич",
+              "gender": "MALE",
+              "source": "АЛЕКСЕЕВ ДЕНИС СЕРГЕЕВИЧ",
+              "qc": null
+            },
+            "hid": "e803b2ab9d94c7cc9b5d6a881ec811c25697cd00c220ca31d197ae0a855a5e79",
+            "type": "PHYSICAL",
+            "share": null
+          }
+        ],
+        "managers": [
+          {
+            "inn": "402708415215",
+            "fio": {
+              "surname": "Алексеев",
+              "name": "Денис",
+              "patronymic": "Сергеевич",
+              "gender": "MALE",
+              "source": "АЛЕКСЕЕВ ДЕНИС СЕРГЕЕВИЧ",
+              "qc": null
+            },
+            "post": "ДИРЕКТОР",
+            "hid": "6a82d08f1a055dbf026d664cf9db243392ed207d6ccc15345d7c3c52d7a8192e",
+            "type": "EMPLOYEE"
+          }
+        ],
+        "branch_type": "MAIN",
+        "branch_count": 0,
+        "source": null,
+        "qc": null,
+        "hid": "938542c99ff6853be22eee49e9344f3bf102dae0dd2e6dae17772b7048f8f5fa",
+        "type": "LEGAL",
+        "state": {
+          "status": "ACTIVE",
+          "actuality_date": 1559692800000,
+          "registration_date": 1334880000000,
+          "liquidation_date": null
+        },
+        "opf": {
+          "type": "2014",
+          "code": "12300",
+          "full": "Общество с ограниченной ответственностью",
+          "short": "ООО"
+        },
+        "name": {
+          "full_with_opf": "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"МОТОРИКА\"",
+          "short_with_opf": "ООО \"МОТОРИКА\"",
+          "latin": null,
+          "full": "МОТОРИКА",
+          "short": "МОТОРИКА"
+        },
+        "inn": "4028051108",
+        "ogrn": "1124028002273",
+        "okpo": null,
+        "okved": "45.3",
+        "okveds": [
+          {
+            "main": true,
+            "type": "2014",
+            "code": "45.3",
+            "name": "Торговля автомобильными деталями, узлами и принадлежностями"
+          },
+          "..."
+        ],
+        "authorities": {
+          "fts_registration": {
+            "type": "FEDERAL_TAX_SERVICE",
+            "code": "4027",
+            "name": "Инспекция Федеральной налоговой службы по Ленинскому округу г. Калуги",
+            "address": "248600,г Калуга,пер Воскресенский,28,,,,,,"
+          },
+          "fts_report": {
+            "type": "FEDERAL_TAX_SERVICE",
+            "code": "4027",
+            "name": "Инспекция Федеральной налоговой службы по Ленинскому округу г. Калуги",
+            "address": null
+          },
+          "pf": {
+            "type": "PENSION_FUND",
+            "code": "050025",
+            "name": "Управление Пенсионного фонда Российской Федерации по г.Калуга",
+            "address": null
+          },
+          "sif": {
+            "type": "SOCIAL_INSURANCE_FUND",
+            "code": "4000",
+            "name": "Государственное учреждение - Калужское региональное отделение Фонда социального страхования Российской Федерации",
+            "address": null
+          }
+        },
+        "documents": {
+          "fts_registration": {
+            "type": "FTS_REGISTRATION",
+            "series": "40",
+            "number": "001280927",
+            "issue_date": 1334880000000,
+            "issue_authority": "4028"
+          },
+          "pf_registration": {
+            "type": "PF_REGISTRATION",
+            "series": null,
+            "number": "050025062068",
+            "issue_date": 1342569600000,
+            "issue_authority": "050025"
+          },
+          "sif_registration": {
+            "type": "SIF_REGISTRATION",
+            "series": null,
+            "number": "400049189240001",
+            "issue_date": 1342569600000,
+            "issue_authority": "4000"
+          },
+          "smb": {
+            "category": "MICRO",
+            "type": "SMB",
+            "series": null,
+            "number": null,
+            "issue_date": 1469998800000,
+            "issue_authority": null
+          }
+        },
+        "licenses": null,
+        "finance": {
+          "tax_system": "USN",
+          "income": 0,
+          "expense": 0,
+          "debt": 12400,
+          "penalty": null
+        },
+        "address": {
+          "value": "г Калуга, ул Вишневского, д 17, кв 55",
+          "unrestricted_value": "248007, Калужская обл, г Калуга, ул Вишневского, д 17, кв 55",
+          "data": { "..." }
+        },
+        "phones": null,
+        "emails": null,
+        "ogrn_date": 1334880000000,
+        "okved_type": "2014",
+        "employee_count": 0
+      }
+    }
+  ]
+}

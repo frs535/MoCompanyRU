@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCompany.Views.CompanyChoiseView"
+             xmlns:vm="clr-namespace:MyCompany.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:CompanyChoiseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <CollectionView ItemsSource="{Binding Employees}"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionMode="Single">
+                <CollectionView.Header>
+                    <Label Text="Выбкрите компанию по которой вы хотите получить данные"/>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Value}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
